@@ -4,10 +4,17 @@ function TarjetaActividad({ actividad, onInscribir }) {
       <div className="card-body">
         <h2 className="h5">{actividad.nombre}</h2>
         <p>{actividad.categoria}</p>
+
         <p>Cupos: {actividad.cupos}</p>
+
         {actividad.cupos > 0 && actividad.cupos <= 5 && (
           <p className="text-danger fw-bold">¡Últimos cupos!</p>
         )}
+
+        <p className={actividad.precio <= 0 ? "text-success fw-bold" : ""}>
+          {actividad.precio <= 0 ? "Gratis!!" : `$${actividad.precio}`}
+        </p>
+
         <button
           className="btn btn-primary"
           onClick={() => onInscribir(actividad)}
